@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Hiburan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page1">
+        <div class="container">
+            <h1>ANAK RUSAK</h1>
+            <input type="text" id="nama" placeholder="Tulis Nama Anda Disini.....">
+            <button id="masukBtn" onclick="masuk()">MASUK</button>
+        </div>
+    </div>
+
+    <div class="page2" style="display: none;">
+        <div class="container">
+            <h1>Mauko Pergi Corner Hari Sabtu?</h1>
+            <button onclick="jawab('GASS')">GASS</button>
+            <button onclick="jawab('TIDAK')">TIDAK</button>
+            <input type="text" id="alasan" placeholder="Alasan lainnya...">
+        </div>
+    </div>
+
+    <div class="adminPage" style="display: none;">
+        <div class="container">
+            <h1>Mauko Pergi Corner Hari Sabtu?</h1>
+            <button onclick="jawab('GASS')">GASS</button>
+            <button onclick="jawab('TIDAK')">TIDAK</button>
+            <input type="text" id="alasan" placeholder="Alasan lainnya...">
+            <button id="lihatJawabanBtn" onclick="lihatJawaban()">LIHAT JAWABAN</button>
+        </div>
+    </div>
+
+    <div class="jawabanPage" style="display: none;">
+        <div class="container">
+            <h1>Hasil Jawaban:</h1>
+            <ul id="jawabanList"></ul>
+            <button onclick="keluar()">KELUAR</button>
+        </div>
+    </div>
+
+    <div class="thankYouPage" style="display: none;">
+        <div class="container">
+            <button onclick="keluar()">KELUAR</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
