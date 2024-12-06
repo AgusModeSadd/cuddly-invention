@@ -4,9 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Hiburan</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            /* Ganti URL di bawah ini dengan URL raw gambar GitHub kamu */
+            background-image: url('https://github.com/username/repository-name/raw/main/website.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 43px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            width: 80%;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #333;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .page1, .page2, .adminPage, .jawabanPage, .thankYouPage {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <!-- Halaman pertama -->
     <div class="page1">
         <div class="container">
             <h1>ANAK RUSAK</h1>
@@ -15,6 +63,7 @@
         </div>
     </div>
 
+    <!-- Halaman kedua untuk jawaban -->
     <div class="page2" style="display: none;">
         <div class="container">
             <h1>Mauko Pergi Corner Hari Sabtu?</h1>
@@ -24,6 +73,7 @@
         </div>
     </div>
 
+    <!-- Halaman admin -->
     <div class="adminPage" style="display: none;">
         <div class="container">
             <h1>Mauko Pergi Corner Hari Sabtu?</h1>
@@ -34,6 +84,7 @@
         </div>
     </div>
 
+    <!-- Halaman hasil jawaban -->
     <div class="jawabanPage" style="display: none;">
         <div class="container">
             <h1>Hasil Jawaban:</h1>
@@ -42,12 +93,61 @@
         </div>
     </div>
 
+    <!-- Halaman selesai -->
     <div class="thankYouPage" style="display: none;">
         <div class="container">
             <button onclick="keluar()">KELUAR</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let isAdmin = false;
+        let jawabanList = [];
+
+        function masuk() {
+            let nama = document.getElementById('nama').value;
+            if (nama === "") {
+                alert("Nama tidak boleh kosong!");
+                return;
+            }
+
+            if (nama === "123123") {
+                isAdmin = true;
+                document.querySelector('.page1').style.display = 'none';
+                document.querySelector('.adminPage').style.display = 'block';
+            } else {
+                document.querySelector('.page1').style.display = 'none';
+                document.querySelector('.page2').style.display = 'block';
+            }
+        }
+
+        function jawab(jawaban) {
+            let alasan = document.getElementById('alasan').value;
+            let nama = document.getElementById('nama').value || 'Anonim';
+
+            jawabanList.push({ nama, jawaban, alasan });
+
+            document.querySelector('.page2').style.display = 'none';
+            document.querySelector('.thankYouPage').style.display = 'block';
+        }
+
+        function lihatJawaban() {
+            let jawabanListElement = document.getElementById('jawabanList');
+            jawabanListElement.innerHTML = '';
+
+            jawabanList.forEach((entry, index) => {
+                let li = document.createElement('li');
+                li.textContent = `${index + 1}. ${entry.nama}, ${entry.jawaban}`;
+                jawabanListElement.appendChild(li);
+            });
+
+            document.querySelector('.adminPage').style.display = 'none';
+            document.querySelector('.jawabanPage').style.display = 'block';
+        }
+
+        function keluar() {
+            window.location.href = "https://chat.whatsapp.com/FlhdUu5f2lG0OeugzKaW7u";
+        }
+    </script>
 </body>
 </html>
